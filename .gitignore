@@ -72,3 +72,4 @@ docs/navbar_diagnosis.json
 .agent/
 client/test-results/
 playwright-report/
+dbfile.txt

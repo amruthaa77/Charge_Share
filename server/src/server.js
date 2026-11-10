@@ -6,6 +6,7 @@ import app from './app.js';
 import { connectDB } from './config/db.js';
 import { startBookingCleanupJob } from './services/bookingCleanUp.service.js';
 import { User } from './models/User.js';
+import { Charger } from './models/Charger.js';
 import { AuditLog } from './models/AuditLog.js';
 import { releasePort } from './scripts/clean-ports.js';
 
@@ -62,15 +63,15 @@ connectDB()
 
     // 3. Demo seed check
     try {
-      const nonAdminCount = await User.countDocuments({ role: { $ne: 'ADMIN' } });
-      if (nonAdminCount === 0) {
+      const chargerCount = await Charger.countDocuments();
+      if (chargerCount === 0) {
         if (isDemoMode) {
           process.env.DEMO_MODE = 'true';
-          console.log('[Server] Demo data missing and DEMO_MODE is active. Auto-seeding initial demo data...');
+          console.log('[Server] Chargers empty and DEMO_MODE is active. Auto-seeding initial demo chargers and data...');
           const { seedDatabase } = await import('./scripts/seed.js');
           await seedDatabase(false);
         } else {
-          console.log('[Server] Database is empty. Production mode active (DEMO_MODE=false). Skipping demo seed.');
+          console.log('[Server] Database has no chargers. Production mode active (DEMO_MODE=false). Skipping demo seed.');
         }
       }
     } catch (seedCheckErr) {

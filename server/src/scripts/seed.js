@@ -16,8 +16,8 @@ export const seedDatabase = async (exitOnComplete = true) => {
   const isProd = process.env.NODE_ENV === 'production';
   const isDemoMode = process.env.DEMO_MODE === 'true';
 
-  if (isProd || !isDemoMode) {
-    console.warn('[Seed] Refusing to run demo seed when NODE_ENV=production or DEMO_MODE is not true.');
+  if (isProd && !isDemoMode) {
+    console.warn('[Seed] Refusing to run demo seed when NODE_ENV=production unless DEMO_MODE=true.');
     if (exitOnComplete) process.exit(0);
     return;
   }
@@ -42,7 +42,12 @@ export const seedDatabase = async (exitOnComplete = true) => {
     const existingAdmin = await User.findOne({ role: 'ADMIN' });
 
     await Promise.all([
-      User.deleteMany({ role: { $ne: 'ADMIN' } }),
+      User.deleteMany({
+        $or: [
+          { email: { $regex: /@chargeshare\.in$/i } },
+          { role: 'ADMIN', email: { $ne: 'admin@chargeshare.in' } },
+        ],
+      }),
       Vehicle.deleteMany({}),
       Charger.deleteMany({}),
       Booking.deleteMany({}),

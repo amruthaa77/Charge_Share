@@ -12,6 +12,8 @@ services:
         value: 10000
       - key: MONGODB_URI
         sync: false
+      - key: DEMO_MODE
+        value: "true"
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_JWT_SECRET
