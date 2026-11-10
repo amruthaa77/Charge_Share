@@ -5,7 +5,10 @@ import { User } from '../models/User.js';
 export const protect = async (req, res, next) => {
   let token;
   const fullUrl = (req.originalUrl || req.url || req.baseUrl || req.path || '').toLowerCase();
-  const isAdminPath = fullUrl.includes('/admin');
+  const isAdminPath =
+    fullUrl.includes('/admin') ||
+    fullUrl.includes('/verifications/pending') ||
+    (fullUrl.includes('/verifications') && fullUrl.includes('/review'));
   const isHostStatsPath = fullUrl.includes('/host-stats');
 
   // Support separate admin_session cookie and X-Admin-Token header

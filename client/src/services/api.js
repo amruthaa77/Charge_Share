@@ -149,8 +149,8 @@ export const reviewAPI = {
 export const verificationAPI = {
   submit: (data) => api.post('/verifications', data),
   getMyStatus: (chargerId) => api.get(`/verifications/my/${chargerId}`),
-  adminGetPending: (params) => api.get('/verifications/pending', { params }),
-  adminReview: (id, data) => api.post(`/verifications/${id}/review`, data),
+  adminGetPending: (params) => adminApi.get('/verifications/pending', { params }),
+  adminReview: (id, data) => adminApi.post(`/verifications/${id}/review`, data),
 };
 
 // Admin Services (Uses dedicated adminApi with admin_session token)
