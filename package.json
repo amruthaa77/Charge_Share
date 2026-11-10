@@ -1,0 +1,38 @@
+{
+  "name": "chargeshare-india",
+  "version": "1.0.0",
+  "description": "Peer-to-Peer EV Charging Marketplace for India",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "predev": "node server/src/scripts/clean-ports.js",
+    "dev": "concurrently -k \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "clean:ports": "node server/src/scripts/clean-ports.js",
+    "create-admin": "npm --prefix server run create-admin --",
+    "reset-admin-password": "npm --prefix server run reset-admin-password --",
+    "import:bay-images": "node scripts/import-bay-images.js",
+    "migrate:bay-images": "npm --prefix server run migrate:bay-images",
+    "seed": "npm --prefix server run seed",
+    "test": "npm --prefix server run test",
+    "test:concurrency": "npm --prefix server run test:concurrency",
+    "build": "npm --prefix client run build",
+    "check:secrets": "node scripts/check_secrets.js",
+    "lint": "npm --prefix server run lint && npm --prefix client run lint"
+  },
+  "keywords": [
+    "ev",
+    "charging",
+    "marketplace",
+    "india",
+    "peer-to-peer",
+    "green-energy"
+  ],
+  "author": "ChargeShare India Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

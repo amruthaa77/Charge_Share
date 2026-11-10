@@ -1,0 +1,112 @@
+[
+  {
+    "id": "bay-1",
+    "title": "Ather Seated Scooter Plugged into Wall-Mounted Home Charger",
+    "src": "/images/bays/bay-1.webp",
+    "thumbnail": "/images/bays/bay-1-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  },
+  {
+    "id": "bay-2",
+    "title": "Matte Grey Ather 450X at Wall Socket with Ivy Facade",
+    "src": "/images/bays/bay-2.webp",
+    "thumbnail": "/images/bays/bay-2-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  },
+  {
+    "id": "bay-3",
+    "title": "White Electric Scooter at Public Bengaluru Ather Grid Kiosk",
+    "src": "/images/bays/bay-3.webp",
+    "thumbnail": "/images/bays/bay-3-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  },
+  {
+    "id": "bay-4",
+    "title": "Modern Electric Scooter Plugged into Public Green Charging Pillar",
+    "src": "/images/bays/bay-4.webp",
+    "thumbnail": "/images/bays/bay-4-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  },
+  {
+    "id": "bay-5",
+    "title": "Futuristic White and Lime Seated EV Scooter in Clean Tunnel",
+    "src": "/images/bays/bay-5.webp",
+    "thumbnail": "/images/bays/bay-5-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  },
+  {
+    "id": "bay-6",
+    "title": "Matte Black Ola S1 Pro with Signature Twin-Ring LED Headlight",
+    "src": "/images/bays/bay-6.webp",
+    "thumbnail": "/images/bays/bay-6-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  },
+  {
+    "id": "bay-7",
+    "title": "Navy Blue Commercial Electric Scooter with Protective Crash Guard",
+    "src": "/images/bays/bay-7.webp",
+    "thumbnail": "/images/bays/bay-7-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  },
+  {
+    "id": "bay-8",
+    "title": "Pearl White Concept Electric Scooter with Blue LED Accent",
+    "src": "/images/bays/bay-8.webp",
+    "thumbnail": "/images/bays/bay-8-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  },
+  {
+    "id": "bay-9",
+    "title": "Minimalist Matte-Black Electric Scooter Studio Profile",
+    "src": "/images/bays/bay-9.webp",
+    "thumbnail": "/images/bays/bay-9-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  },
+  {
+    "id": "bay-10",
+    "title": "Ather 450X Wide Perspective at Gated Villa Wallbox",
+    "src": "/images/bays/bay-10.webp",
+    "thumbnail": "/images/bays/bay-10-thumb.webp",
+    "aspectRatio": "16:9",
+    "width": 1200,
+    "height": 675,
+    "thumbWidth": 480,
+    "thumbHeight": 270
+  }
+]

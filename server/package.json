@@ -1,0 +1,56 @@
+{
+  "name": "chargeshare-server",
+  "version": "1.0.0",
+  "description": "Backend API for ChargeShare India",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "clean:ports": "node src/scripts/clean-ports.js",
+    "migrate:bay-images": "node src/scripts/migrate-bay-images.js",
+    "seed": "node src/scripts/seed.js",
+    "create-admin": "node src/scripts/create-admin.js",
+    "reset-admin-password": "node src/scripts/reset-admin-password.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --detectOpenHandles --forceExit",
+    "test:concurrency": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests/concurrency.test.js --runInBand --detectOpenHandles --forceExit",
+    "lint": "eslint src/ --ext .js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "chargeshare-india": "file:..",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^10.3.1",
+    "qrcode": "^1.5.4",
+    "razorpay": "^2.9.5",
+    "sharp": "^0.35.5",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.1.3",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {},
+    "testTimeout": 60000,
+    "verbose": true
+  }
+}

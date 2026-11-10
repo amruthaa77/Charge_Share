@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <rect width="400" height="300" fill="#061A14" rx="20" />
+  <!-- Neutral Electric Scooter Illustration -->
+  <g transform="translate(60, 40)">
+    <!-- Wheels -->
+    <circle cx="50" cy="160" r="38" fill="#0F172A" stroke="#475569" stroke-width="8" />
+    <circle cx="50" cy="160" r="18" fill="#1E293B" stroke="#10B981" stroke-width="2" />
+    <circle cx="230" cy="160" r="38" fill="#0F172A" stroke="#475569" stroke-width="8" />
+    <circle cx="230" cy="160" r="18" fill="#1E293B" stroke="#10B981" stroke-width="2" />
+    <!-- Footboard & Battery -->
+    <path d="M 70 160 L 200 160 L 180 125 L 85 125 Z" fill="#0E231C" stroke="#10B981" stroke-width="2" />
+    <!-- Body Panel -->
+    <path d="M 80 130 L 105 70 L 175 70 L 195 125 Z" fill="#10B981" rx="8" />
+    <!-- Seat -->
+    <path d="M 95 65 C 105 52, 175 52, 185 65 Z" fill="#020617" />
+    <!-- Steering column -->
+    <path d="M 195 130 L 225 30 L 240 33 L 215 160 Z" fill="#059669" />
+    <!-- Handlebar & Headlight -->
+    <rect x="225" y="20" width="30" height="10" rx="3" fill="#020617" />
+    <circle cx="255" cy="25" r="4" fill="#F8FAFC" />
+    <!-- 16A Badge -->
+    <circle cx="140" cy="100" r="7" fill="#10B981" />
+  </g>
+  <text x="200" y="260" text-anchor="middle" fill="#6EE7B7" font-family="sans-serif" font-size="13" font-weight="bold">Electric Scooter (Recommended)</text>
+  <text x="200" y="280" text-anchor="middle" fill="#94A3B8" font-family="sans-serif" font-size="10">100% 16A Single-Phase Compatible</text>
+</svg>

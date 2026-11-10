@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#061A14" /><stop offset="100%" stop-color="#0B3D2E" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg1)" rx="24" />
+  <!-- Map Grid Graphic -->
+  <g opacity="0.25" stroke="#10B981" stroke-width="1.5">
+    <line x1="50" y1="50" x2="550" y2="50" /><line x1="50" y1="120" x2="550" y2="120" />
+    <line x1="50" y1="190" x2="550" y2="190" /><line x1="50" y1="260" x2="550" y2="260" />
+    <line x1="50" y1="330" x2="550" y2="330" />
+    <line x1="120" y1="50" x2="120" y2="350" /><line x1="220" y1="50" x2="220" y2="350" />
+    <line x1="320" y1="50" x2="320" y2="350" /><line x1="420" y1="50" x2="420" y2="350" /><line x1="520" y1="50" x2="520" y2="350" />
+  </g>
+  <!-- Map Pins in Bengaluru -->
+  <circle cx="220" cy="190" r="14" fill="#10B981" />
+  <circle cx="220" cy="190" r="6" fill="#FFFFFF" />
+  <circle cx="320" cy="120" r="18" fill="#10B981" />
+  <circle cx="320" cy="120" r="8" fill="#FFFFFF" />
+  <circle cx="420" cy="260" r="14" fill="#10B981" />
+  <circle cx="420" cy="260" r="6" fill="#FFFFFF" />
+  <!-- Pin Label Card -->
+  <rect x="250" y="70" width="140" height="36" rx="10" fill="#0F2E23" stroke="#10B981" stroke-width="1.5" />
+  <text x="320" y="93" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="11" font-weight="bold">Indiranagar 16A Bay</text>
+  <!-- Rider Icon Outline -->
+  <g transform="translate(140, 240)">
+    <circle cx="30" cy="50" r="24" fill="#0F172A" stroke="#64748B" stroke-width="4" />
+    <circle cx="130" cy="50" r="24" fill="#0F172A" stroke="#64748B" stroke-width="4" />
+    <path d="M 40 50 L 110 50 L 95 25 L 55 25 Z" fill="#10B981" />
+    <circle cx="75" cy="5" r="10" fill="#E2E8F0" />
+  </g>
+</svg>

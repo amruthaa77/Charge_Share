@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#04120E" /><stop offset="100%" stop-color="#082A1F" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg2)" rx="24" />
+  <!-- Smartphone Outline -->
+  <rect x="210" y="40" width="180" height="320" rx="28" fill="#0F172A" stroke="#334155" stroke-width="3" />
+  <rect x="225" y="60" width="150" height="275" rx="18" fill="#061A14" stroke="#1E293B" stroke-width="1.5" />
+  <!-- Dynamic Island -->
+  <rect x="265" y="68" width="70" height="12" rx="6" fill="#1E293B" />
+  <!-- Pass Header -->
+  <text x="300" y="110" text-anchor="middle" fill="#10B981" font-family="sans-serif" font-size="12" font-weight="bold">10-MIN ATOMIC HOLD</text>
+  <rect x="240" y="125" width="120" height="26" rx="8" fill="#10B981" opacity="0.15" />
+  <text x="300" y="142" text-anchor="middle" fill="#6EE7B7" font-family="monospace" font-size="13" font-weight="bold">09 : 45</text>
+  <!-- Simulated QR Code -->
+  <g transform="translate(250, 170)">
+    <rect width="100" height="100" fill="#FFFFFF" rx="8" />
+    <rect x="10" y="10" width="25" height="25" fill="#061A14" />
+    <rect x="65" y="10" width="25" height="25" fill="#061A14" />
+    <rect x="10" y="65" width="25" height="25" fill="#061A14" />
+    <rect x="42" y="42" width="16" height="16" fill="#10B981" />
+  </g>
+  <text x="300" y="300" text-anchor="middle" fill="#94A3B8" font-family="sans-serif" font-size="10">Guaranteed Bay Lock</text>
+</svg>

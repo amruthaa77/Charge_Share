@@ -1,0 +1,27 @@
+<svg width="960" height="600" viewBox="0 0 960 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="fallbackGrad" x1="0" y1="0" x2="960" y2="600" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#064e3b"/>
+            <stop offset="100%" stop-color="#022c22"/>
+          </linearGradient>
+        </defs>
+
+        <rect width="960" height="600" fill="url(#fallbackGrad)"/>
+        
+        <!-- Large Stylized Shield & Plug Motif -->
+        <circle cx="480" cy="270" r="140" fill="#047857" opacity="0.3"/>
+        <circle cx="480" cy="270" r="95" fill="#065f46" stroke="#10b981" stroke-width="4"/>
+        
+        <!-- 3-Pin Socket Silhouette in Center -->
+        <circle cx="480" cy="235" r="18" fill="#ecfdf5"/>
+        <circle cx="445" cy="285" r="14" fill="#ecfdf5"/>
+        <circle cx="515" cy="285" r="14" fill="#ecfdf5"/>
+
+        <!-- Cable Ribbon -->
+        <path d="M480 365 Q480 440, 540 460 T600 480" fill="none" stroke="#10b981" stroke-width="10" stroke-linecap="round"/>
+
+        <!-- Text Labels -->
+        <text x="480" y="440" fill="#ffffff" font-family="system-ui, sans-serif" font-size="28" font-weight="900" text-anchor="middle" letter-spacing="1">CHARGESHARE INDIA</text>
+        <text x="480" y="480" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" letter-spacing="2">VERIFIED 16A SCOOTER BAY</text>
+        <text x="480" y="515" fill="#a7f3d0" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Earthing Verified • Bengaluru Two-Wheeler Grid</text>
+      </svg>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /host/dashboard
+Disallow: /my-bookings
+
+Sitemap: https://chargeshare.in/sitemap.xml

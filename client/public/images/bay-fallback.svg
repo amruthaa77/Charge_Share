@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#041812" />
+      <stop offset="50%" stop-color="#07221A" />
+      <stop offset="100%" stop-color="#0B1E19" />
+    </linearGradient>
+    <radialGradient id="greenGlow" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#0E9F6E" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0E9F6E" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="scooterBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Emerald Background with Subtle Radial Glow -->
+  <rect width="1200" height="675" fill="url(#bgGrad)" />
+  <rect width="1200" height="675" fill="url(#greenGlow)" />
+
+  <!-- Subtle Blueprint Grid Lines -->
+  <g stroke="#0E9F6E" stroke-opacity="0.06" stroke-width="1">
+    <line x1="0" y1="135" x2="1200" y2="135" />
+    <line x1="0" y1="270" x2="1200" y2="270" />
+    <line x1="0" y1="405" x2="1200" y2="405" />
+    <line x1="0" y1="540" x2="1200" y2="540" />
+    <line x1="300" y1="0" x2="300" y2="675" />
+    <line x1="600" y1="0" x2="600" y2="675" />
+    <line x1="900" y1="0" x2="900" y2="675" />
+  </g>
+
+  <!-- Ground Line -->
+  <line x1="280" y1="475" x2="920" y2="475" stroke="#10B981" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="8 6" />
+
+  <!-- Electric Scooter Silhouette Artwork -->
+  <g id="electric-scooter-motif" transform="translate(420, 175)">
+    <!-- Rear Wheel -->
+    <circle cx="80" cy="245" r="45" stroke="#34D399" stroke-width="8" fill="#041812" />
+    <circle cx="80" cy="245" r="24" stroke="#10B981" stroke-width="3" stroke-dasharray="6 4" fill="#06281E" />
+    <circle cx="80" cy="245" r="8" fill="#34D399" />
+
+    <!-- Front Wheel -->
+    <circle cx="310" cy="245" r="45" stroke="#34D399" stroke-width="8" fill="#041812" />
+    <circle cx="310" cy="245" r="24" stroke="#10B981" stroke-width="3" stroke-dasharray="6 4" fill="#06281E" />
+    <circle cx="310" cy="245" r="8" fill="#34D399" />
+
+    <!-- Chassis Deck -->
+    <path d="M 120 250 L 260 250 C 270 250, 275 240, 280 220 L 295 105" stroke="#10B981" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Footboard Cover -->
+    <rect x="140" y="240" width="115" height="10" rx="4" fill="#34D399" opacity="0.8" />
+
+    <!-- Steering Column & Handlebars -->
+    <line x1="295" y1="105" x2="305" y2="60" stroke="#34D399" stroke-width="8" stroke-linecap="round" />
+    <line x1="285" y1="55" x2="325" y2="62" stroke="#6EE7B7" stroke-width="10" stroke-linecap="round" />
+    <!-- Headlight Beam -->
+    <path d="M 325 65 L 365 55 L 365 75 Z" fill="#FDE047" opacity="0.8" />
+
+    <!-- Seating & Under-Seat Bodywork -->
+    <path d="M 80 200 C 95 180, 110 160, 140 160 L 220 160 C 235 185, 230 220, 215 245 Z" fill="url(#scooterBody)" opacity="0.3" stroke="#10B981" stroke-width="4" stroke-linejoin="round" />
+    <!-- Cushioned Seat -->
+    <path d="M 115 155 C 130 148, 170 148, 225 155 C 230 157, 230 165, 220 167 L 120 167 C 110 165, 110 157, 115 155 Z" fill="#D1FAE5" />
+
+    <!-- 16A Charging Cable Connected to Scooter -->
+    <path d="M 175 205 C 150 205, 50 240, 0 255 C -40 265, -80 260, -100 240" fill="none" stroke="#FBBF24" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 6" />
+    <!-- Charging Socket Post -->
+    <g transform="translate(-140, 140)">
+      <rect x="0" y="0" width="36" height="150" rx="8" fill="#06281E" stroke="#10B981" stroke-width="3" />
+      <circle cx="18" cy="40" r="14" fill="#041812" stroke="#34D399" stroke-width="3" />
+      <circle cx="18" cy="35" r="3" fill="#34D399" />
+      <circle cx="13" cy="43" r="2.5" fill="#34D399" />
+      <circle cx="23" cy="43" r="2.5" fill="#34D399" />
+      <!-- LED Indicator -->
+      <circle cx="18" cy="18" r="4" fill="#10B981" />
+      <rect x="6" y="80" width="24" height="10" rx="3" fill="#10B981" opacity="0.6" />
+    </g>
+  </g>
+
+  <!-- Title & Typography -->
+  <text x="600" y="540" fill="#ECFDF5" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="3">
+    CHARGESHARE INDIA
+  </text>
+  <text x="600" y="575" fill="#34D399" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="2">
+    VERIFIED 16A TWO-WHEELER BAY
+  </text>
+  <text x="600" y="605" fill="#6EE7B7" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle" opacity="0.75">
+    Bengaluru Dedicated Community Socket Grid
+  </text>
+</svg>

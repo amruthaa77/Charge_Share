@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#061A14" />
+      <stop offset="60%" stop-color="#0B3D2E" />
+      <stop offset="100%" stop-color="#04120E" />
+    </linearGradient>
+    <linearGradient id="groundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="scooterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="wallboxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Sky & City Ambient -->
+  <rect width="1200" height="800" fill="url(#skyGrad)" />
+  <circle cx="950" cy="200" r="350" fill="#10B981" opacity="0.08" filter="url(#glow)" />
+  
+  <!-- Architectural Wall & Driveway -->
+  <path d="M0 450 L1200 450 L1200 800 L0 800 Z" fill="url(#groundGrad)" />
+  <!-- Paver / Driveway Grid Lines -->
+  <line x1="0" y1="520" x2="1200" y2="520" stroke="#334155" stroke-width="1.5" stroke-dasharray="12 12" opacity="0.4" />
+  <line x1="0" y1="620" x2="1200" y2="620" stroke="#334155" stroke-width="1.5" stroke-dasharray="12 12" opacity="0.4" />
+  <line x1="0" y1="720" x2="1200" y2="720" stroke="#334155" stroke-width="1.5" stroke-dasharray="12 12" opacity="0.4" />
+
+  <!-- Modern Bengaluru Residence Wall / Planter Box -->
+  <rect x="0" y="100" width="480" height="350" fill="#0E231C" stroke="#16382C" stroke-width="2" rx="16" />
+  <rect x="40" y="140" width="160" height="220" fill="#081812" rx="12" stroke="#1A4A3A" stroke-width="2" />
+  <circle cx="120" cy="210" r="18" fill="#10B981" opacity="0.2" />
+  <text x="120" y="270" text-anchor="middle" fill="#6EE7B7" font-family="monospace" font-size="12" font-weight="bold">16A SOCKET</text>
+  <text x="120" y="290" text-anchor="middle" fill="#94A3B8" font-family="sans-serif" font-size="10">3.3 kW Verified</text>
+
+  <!-- 16A Heavy-Duty Socket Box with Cable Hook -->
+  <g transform="translate(100, 190)">
+    <rect x="-30" y="-30" width="60" height="70" rx="10" fill="url(#wallboxGrad)" stroke="#10B981" stroke-width="2" />
+    <circle cx="0" cy="-6" r="6" fill="#061A14" />
+    <circle cx="-10" cy="12" r="4.5" fill="#061A14" />
+    <circle cx="10" cy="12" r="4.5" fill="#061A14" />
+    <circle cx="18" cy="-18" r="3" fill="#10B981" filter="url(#glow)" />
+    <!-- Cable draping down to scooter -->
+    <path d="M 0 35 C 10 90, 80 180, 220 220 C 350 250, 480 320, 560 380" fill="none" stroke="#10B981" stroke-width="5" stroke-linecap="round" />
+  </g>
+
+  <!-- Electric Scooter (Side Profile Illustration) -->
+  <g transform="translate(520, 360)">
+    <!-- Rear Wheel -->
+    <circle cx="80" cy="210" r="65" fill="#0F172A" stroke="#475569" stroke-width="12" />
+    <circle cx="80" cy="210" r="35" fill="#1E293B" stroke="#10B981" stroke-width="3" />
+    
+    <!-- Front Wheel -->
+    <circle cx="440" cy="210" r="65" fill="#0F172A" stroke="#475569" stroke-width="12" />
+    <circle cx="440" cy="210" r="35" fill="#1E293B" stroke="#10B981" stroke-width="3" />
+
+    <!-- Chassis Baseboard / Battery Compartment -->
+    <path d="M 120 210 L 380 210 L 350 170 L 150 170 Z" fill="#0F172A" stroke="#334155" stroke-width="3" />
+    <rect x="170" y="175" width="160" height="28" rx="6" fill="#061A14" stroke="#10B981" stroke-width="2" />
+    <text x="250" y="193" text-anchor="middle" fill="#10B981" font-family="sans-serif" font-size="11" font-weight="bold">3.7 kWh LITHIUM PACK</text>
+
+    <!-- Scooter Bodywork (Emerald & Contrast Dark Slate) -->
+    <path d="M 120 180 L 160 90 L 260 90 L 300 170 Z" fill="url(#scooterGrad)" rx="10" />
+    <!-- Seat -->
+    <path d="M 140 85 C 150 70, 260 70, 275 85 L 265 95 L 150 95 Z" fill="#020617" stroke="#1E293B" stroke-width="2" />
+
+    <!-- Front Apron & Steering Column -->
+    <path d="M 330 180 L 400 30 L 430 40 L 380 200 Z" fill="url(#scooterGrad)" />
+    <!-- Handlebar & Headlamp -->
+    <rect x="385" y="15" width="55" height="18" rx="6" fill="#020617" stroke="#334155" stroke-width="2" />
+    <polygon points="435,20 455,24 435,28" fill="#F8FAFC" filter="url(#glow)" />
+
+    <!-- Charge Port Indicator (Pulsing Green LED) -->
+    <circle cx="210" cy="140" r="9" fill="#10B981" filter="url(#glow)" />
+    <circle cx="210" cy="140" r="4" fill="#FFFFFF" />
+
+    <!-- Suspension & Swingarm -->
+    <line x1="80" y1="210" x2="150" y2="180" stroke="#64748B" stroke-width="8" stroke-linecap="round" />
+    <line x1="440" y1="210" x2="400" y2="70" stroke="#64748B" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <!-- Foreground Quality Tag Badge -->
+  <g transform="translate(740, 140)">
+    <rect width="380" height="96" rx="24" fill="#0F2E23" stroke="#10B981" stroke-width="1.5" opacity="0.95" />
+    <circle cx="48" cy="48" r="22" fill="#10B981" opacity="0.2" />
+    <path d="M 40 48 L 46 54 L 58 42" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="86" y="42" fill="#F8FAFC" font-family="sans-serif" font-size="16" font-weight="bold">Bengaluru Scooter-First Network</text>
+    <text x="86" y="66" fill="#A7F3D0" font-family="sans-serif" font-size="12">16A Verified Sockets • Zero Range Anxiety</text>
+  </g>
+</svg>

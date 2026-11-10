@@ -1,0 +1,74 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE Files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Database
+.db_data/
+server/.db_data/
+
+# Uploads
+server/uploads/
+!server/uploads/.gitkeep
+
+# Local Embedded Database
+.mongo-dev-data/
+server/.mongo-dev-data/
+
+# Extra secret safety
+.env.*
+!.env.example
+
+# Junk and large local-only files
+docs/*raw*.json
+temp_candidates/
+evimages/
+docs/screenshots/
+gsd-template/
+scratch_*
+test.jpg
+scripts/audit_*.json
+
+# More local-only junk
+**/docs/screenshots/
+docs/image-audit/
+docs/image-review*
+docs/navbar_diagnosis.json
+
+.agent/
+client/test-results/
+playwright-report/

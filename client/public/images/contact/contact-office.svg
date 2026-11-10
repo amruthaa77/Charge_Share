@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <rect width="600" height="400" fill="#061A14" rx="20" />
+  <rect x="180" y="70" width="240" height="200" rx="16" fill="#0F2E23" stroke="#10B981" stroke-width="2" />
+  <rect x="210" y="100" width="60" height="50" rx="6" fill="#061A14" />
+  <rect x="330" y="100" width="60" height="50" rx="6" fill="#061A14" />
+  <rect x="270" y="180" width="60" height="90" fill="#061A14" />
+  <text x="300" y="320" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold">100ft Road, Indiranagar</text>
+  <text x="300" y="345" text-anchor="middle" fill="#6EE7B7" font-family="sans-serif" font-size="12">ChargeShare India Operational Headquarters</text>
+</svg>

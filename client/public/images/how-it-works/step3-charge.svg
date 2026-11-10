@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#061A14" /><stop offset="100%" stop-color="#0E392B" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg3)" rx="24" />
+  <!-- Wall Mount 16A Socket -->
+  <rect x="60" y="80" width="110" height="140" rx="14" fill="#1E293B" stroke="#10B981" stroke-width="2" />
+  <circle cx="115" cy="130" r="10" fill="#061A14" />
+  <circle cx="100" cy="165" r="7.5" fill="#061A14" />
+  <circle cx="130" cy="165" r="7.5" fill="#061A14" />
+  <!-- Plug Cable Connection -->
+  <path d="M 115 170 C 115 260, 220 280, 320 260 L 370 240" fill="none" stroke="#10B981" stroke-width="6" stroke-linecap="round" />
+  <!-- Electric Scooter Silhouette -->
+  <g transform="translate(300, 160)">
+    <circle cx="60" cy="130" r="35" fill="#0F172A" stroke="#475569" stroke-width="8" />
+    <circle cx="210" cy="130" r="35" fill="#0F172A" stroke="#475569" stroke-width="8" />
+    <path d="M 70 130 L 190 130 L 170 90 L 80 90 Z" fill="#10B981" />
+    <path d="M 170 90 L 205 30 L 220 35 L 195 130 Z" fill="#059669" />
+    <!-- Pulsing Charge Indicator -->
+    <circle cx="130" cy="95" r="12" fill="#10B981" opacity="0.3" />
+    <circle cx="130" cy="95" r="6" fill="#10B981" />
+  </g>
+  <rect x="230" y="40" width="180" height="40" rx="12" fill="#0F2E23" stroke="#10B981" stroke-width="1.5" />
+  <text x="320" y="65" text-anchor="middle" fill="#6EE7B7" font-family="sans-serif" font-size="12" font-weight="bold">⚡ 3.3 kW Charging Active</text>
+</svg>

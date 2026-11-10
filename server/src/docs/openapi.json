@@ -1,0 +1,437 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ChargeShare India API",
+    "description": "Peer-to-Peer EV Charging Marketplace REST API for India.\nHandles user authentication, host onboarding & KYC verification, charger listings with geospatial search, slot booking with race-condition prevention, Razorpay payments, and admin controls.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "ChargeShare India Engineering Team",
+      "email": "support@chargeshare.in"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api/v1",
+      "description": "API v1 Endpoint"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Register a new EV Owner or Host",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "email", "password", "phone"],
+                "properties": {
+                  "name": { "type": "string", "example": "Rahul Sharma" },
+                  "email": { "type": "string", "example": "rahul@example.com" },
+                  "password": { "type": "string", "example": "password123" },
+                  "phone": { "type": "string", "example": "+919876543210" },
+                  "role": { "type": "string", "enum": ["EV_OWNER", "HOST"], "example": "EV_OWNER" },
+                  "city": { "type": "string", "example": "Bengaluru" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "User registered successfully" },
+          "400": { "description": "Validation error or email already in use" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Log in with email & password",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": { "type": "string", "example": "rahul@example.com" },
+                  "password": { "type": "string", "example": "password123" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Logged in successfully" },
+          "401": { "description": "Invalid credentials" }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "summary": "Log out current user",
+        "tags": ["Auth"],
+        "responses": { "200": { "description": "Logged out successfully" } }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "summary": "Get authenticated user profile",
+        "tags": ["Auth"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "User profile" } }
+      }
+    },
+    "/auth/profile": {
+      "put": {
+        "summary": "Update user profile",
+        "tags": ["Auth"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "phone": { "type": "string" },
+                  "city": { "type": "string" },
+                  "avatar": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Profile updated" } }
+      }
+    },
+    "/vehicles": {
+      "get": {
+        "summary": "List my EV vehicles",
+        "tags": ["Vehicles"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "List of vehicles" } }
+      },
+      "post": {
+        "summary": "Add a new EV vehicle",
+        "tags": ["Vehicles"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["make", "model", "year", "registrationNumber", "connectorType"],
+                "properties": {
+                  "make": { "type": "string", "example": "Tata" },
+                  "model": { "type": "string", "example": "Nexon EV" },
+                  "year": { "type": "number", "example": 2023 },
+                  "registrationNumber": { "type": "string", "example": "KA-01-EQ-5432" },
+                  "connectorType": { "type": "string", "enum": ["CCS2", "Type 2", "Bharat AC-001", "3-pin", "CHAdeMO"], "example": "CCS2" },
+                  "batteryCapacityKWh": { "type": "number", "example": 40.5 }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Vehicle created" } }
+      }
+    },
+    "/vehicles/{id}": {
+      "get": {
+        "summary": "Get vehicle by ID",
+        "tags": ["Vehicles"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Vehicle details" } }
+      },
+      "put": {
+        "summary": "Update vehicle",
+        "tags": ["Vehicles"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Vehicle updated" } }
+      },
+      "delete": {
+        "summary": "Delete vehicle",
+        "tags": ["Vehicles"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Vehicle deleted" } }
+      }
+    },
+    "/chargers": {
+      "get": {
+        "summary": "Search chargers with geo radius and filters",
+        "tags": ["Chargers"],
+        "parameters": [
+          { "name": "lat", "in": "query", "schema": { "type": "number" } },
+          { "name": "lng", "in": "query", "schema": { "type": "number" } },
+          { "name": "radiusKm", "in": "query", "schema": { "type": "number", "default": 25 } },
+          { "name": "city", "in": "query", "schema": { "type": "string" } },
+          { "name": "connectorType", "in": "query", "schema": { "type": "string" } },
+          { "name": "minPower", "in": "query", "schema": { "type": "number" } },
+          { "name": "maxPrice", "in": "query", "schema": { "type": "number" } },
+          { "name": "verifiedOnly", "in": "query", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": { "200": { "description": "List of chargers" } }
+      },
+      "post": {
+        "summary": "Host creates a new charger listing",
+        "tags": ["Chargers"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "201": { "description": "Charger created, pending verification" } }
+      }
+    },
+    "/chargers/{id}": {
+      "get": {
+        "summary": "Get charger details",
+        "tags": ["Chargers"],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Charger details" } }
+      },
+      "put": {
+        "summary": "Host updates charger details",
+        "tags": ["Chargers"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Charger updated" } }
+      },
+      "delete": {
+        "summary": "Delete charger listing",
+        "tags": ["Chargers"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Charger deleted" } }
+      }
+    },
+    "/chargers/{id}/availability": {
+      "get": {
+        "summary": "Get discrete slot availability by date",
+        "tags": ["Chargers"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "date", "in": "query", "schema": { "type": "string", "example": "2025-06-15" } }
+        ],
+        "responses": { "200": { "description": "Slots availability" } }
+      }
+    },
+    "/chargers/{id}/pause": {
+      "patch": {
+        "summary": "Toggle charger pause / resume status",
+        "tags": ["Chargers"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Status toggled" } }
+      }
+    },
+    "/chargers/my/listings": {
+      "get": {
+        "summary": "Get all listings owned by authenticated host",
+        "tags": ["Chargers"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Host charger listings" } }
+      }
+    },
+    "/bookings": {
+      "post": {
+        "summary": "Hold a slot for 10 minutes (Concurrency Protected)",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["chargerId", "slotStart"],
+                "properties": {
+                  "chargerId": { "type": "string" },
+                  "vehicleId": { "type": "string" },
+                  "slotStart": { "type": "string", "format": "date-time" },
+                  "durationMinutes": { "type": "number", "default": 60 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Slot held for 10 minutes" },
+          "409": { "description": "Slot already booked or reserved (Double-booking conflict)" }
+        }
+      },
+      "get": {
+        "summary": "List my bookings (EV Owner or Host)",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          { "name": "status", "in": "query", "schema": { "type": "string", "enum": ["UPCOMING", "COMPLETED", "CANCELLED"] } },
+          { "name": "type", "in": "query", "schema": { "type": "string", "enum": ["user", "host"] } }
+        ],
+        "responses": { "200": { "description": "List of bookings" } }
+      }
+    },
+    "/bookings/confirm": {
+      "post": {
+        "summary": "Confirm booking after payment & generate QR check-in code",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Booking confirmed" } }
+      }
+    },
+    "/bookings/{id}": {
+      "get": {
+        "summary": "Get booking details with QR code",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Booking details" } }
+      }
+    },
+    "/bookings/{id}/cancel": {
+      "post": {
+        "summary": "Cancel booking with tiered refund (>2h 100%, <2h 50%, start 0%)",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Booking cancelled and refund processed" } }
+      }
+    },
+    "/bookings/{id}/action": {
+      "post": {
+        "summary": "Host confirm or reject a booking",
+        "tags": ["Bookings"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Booking action executed" } }
+      }
+    },
+    "/payments/create-order": {
+      "post": {
+        "summary": "Create Razorpay Order for a booking",
+        "tags": ["Payments"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Order created" } }
+      }
+    },
+    "/payments/verify": {
+      "post": {
+        "summary": "Verify Razorpay payment signature",
+        "tags": ["Payments"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Payment verified" } }
+      }
+    },
+    "/payments/mock-pay": {
+      "post": {
+        "summary": "Simulate instant mock payment for testing without keys",
+        "tags": ["Payments"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Mock payment completed" } }
+      }
+    },
+    "/reviews": {
+      "post": {
+        "summary": "Leave review for a completed booking",
+        "tags": ["Reviews"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "201": { "description": "Review submitted" } }
+      }
+    },
+    "/reviews/charger/{chargerId}": {
+      "get": {
+        "summary": "Get all reviews for a charger",
+        "tags": ["Reviews"],
+        "parameters": [{ "name": "chargerId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "List of reviews" } }
+      }
+    },
+    "/verifications": {
+      "post": {
+        "summary": "Submit host documents and safety checklist for verification",
+        "tags": ["Verification"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Verification submitted" } }
+      }
+    },
+    "/verifications/my/{chargerId}": {
+      "get": {
+        "summary": "Get host verification status for a charger",
+        "tags": ["Verification"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "chargerId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Verification status" } }
+      }
+    },
+    "/verifications/pending": {
+      "get": {
+        "summary": "Admin view pending verification queue",
+        "tags": ["Verification", "Admin"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Pending verifications" } }
+      }
+    },
+    "/verifications/{id}/review": {
+      "post": {
+        "summary": "Admin approve or reject host verification",
+        "tags": ["Verification", "Admin"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Verification reviewed" } }
+      }
+    },
+    "/admin/stats": {
+      "get": {
+        "summary": "Admin get platform stats & revenue metrics",
+        "tags": ["Admin"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Platform statistics" } }
+      }
+    },
+    "/admin/chargers": {
+      "get": {
+        "summary": "Admin list all chargers with filter & search",
+        "tags": ["Admin"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "All chargers" } }
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "summary": "Admin list all users with role filter & search",
+        "tags": ["Admin"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "All users" } }
+      }
+    },
+    "/admin/host-stats": {
+      "get": {
+        "summary": "Host get analytics, utilization %, and earnings breakdown",
+        "tags": ["Admin", "Host"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Host metrics" } }
+      }
+    },
+    "/uploads": {
+      "post": {
+        "summary": "Upload document or image",
+        "tags": ["Uploads"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "File uploaded" } }
+      }
+    }
+  }
+}
