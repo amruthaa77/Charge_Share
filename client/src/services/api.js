@@ -1,7 +1,18 @@
 import axios from 'axios';
 
+const getBaseURL = () => {
+  const envUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL;
+  if (envUrl) {
+    const trimmed = envUrl.replace(/\/+$/, '');
+    return trimmed.includes('/api') ? trimmed : `${trimmed}/api/v1`;
+  }
+  return '/api/v1';
+};
+
+const apiBaseURL = getBaseURL();
+
 const api = axios.create({
-  baseURL: '/api/v1',
+  baseURL: apiBaseURL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -37,7 +48,7 @@ api.interceptors.response.use(
 
 // Dedicated Admin API instance with its own isolated admin_session token
 export const adminApi = axios.create({
-  baseURL: '/api/v1',
+  baseURL: apiBaseURL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
